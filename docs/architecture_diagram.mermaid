@@ -1,0 +1,50 @@
+graph TD
+    %% Styling
+    classDef memory fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef node fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef ext fill:#dfd,stroke:#333,stroke-width:2px;
+    
+    %% Inputs and Memory
+    Query[User Research Query] --> Disambiguator(Query Disambiguator)
+    
+    subgraph Memory Architecture
+        STM[(Short-Term Memory / Context)]:::memory
+        LTM[(Long-Term ChromaDB)]:::memory
+        EPM[(Episodic Trajectory Memory)]:::memory
+    end
+    
+    %% Cognitive Loop
+    Disambiguator --> Planner(Planner Node):::node
+    Planner <--> EPM
+    Planner --> Executor(Executor / Tool Dispatcher):::node
+    
+    %% Tool Dispatch and execution
+    subgraph Tool Registry & Fallbacks
+        Executor --> Tool1[SEC EDGAR API]:::ext
+        Executor --> Tool2[Financial Data API]:::ext
+        Executor --> Tool3[Web & News Search]:::ext
+        Executor --> Tool4[Calculation Engine]:::ext
+        Tool1 -.->|Fallback| Tool3
+        Tool2 -.->|Fallback| Tool1
+    end
+    
+    Tool1 --> Obs[Process Observations]
+    Tool2 --> Obs
+    Tool3 --> Obs
+    Tool4 --> Obs
+    
+    Obs --> STM
+    Obs --> Executor
+    
+    Executor -->|All steps complete| Synthesizer(Synthesis Engine):::node
+    Synthesizer <--> LTM
+    
+    Synthesizer --> FactCheck(Fact Verification Node):::node
+    FactCheck -->|Inconsistencies| Synthesizer
+    FactCheck -->|Verified| Reporter(Report Generator Node):::node
+    
+    Reporter --> Output[Final Investment Report]
+    
+    %% Logging
+    Reporter -.->|Log Trajectory| EPM
+    Reporter -.->|Archive Findings| LTM
