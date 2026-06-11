@@ -15,9 +15,17 @@ def news_sentiment(query: str, num_articles: int, lookback_days: int) -> dict:
         summaries = []
         
         for article in articles:
-            title = article.get("title", "")
-            publisher = article.get("publisher", "")
-            
+            # yfinance moved the article fields under a nested "content" object;
+            # fall back to the legacy flat schema for older versions.
+            content = article.get("content", article)
+            title = content.get("title", "") or ""
+            provider = content.get("provider") or {}
+            publisher = provider.get("displayName") if isinstance(provider, dict) else ""
+            publisher = publisher or content.get("publisher", "") or article.get("publisher", "")
+
+            if not title:
+                continue
+
             # Simple sentiment analysis on the title
             blob = TextBlob(title)
             sentiment = blob.sentiment.polarity
@@ -25,7 +33,7 @@ def news_sentiment(query: str, num_articles: int, lookback_days: int) -> dict:
             
             summaries.append(f"[{publisher}] {title} (Sentiment: {sentiment:.2f})")
             
-        avg_sentiment = total_sentiment / len(articles) if articles else 0.0
+        avg_sentiment = total_sentiment / len(summaries) if summaries else 0.0
         
         return {
             "sentiment_score": avg_sentiment,

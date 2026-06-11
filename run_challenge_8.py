@@ -3,11 +3,14 @@ import json
 import logging
 
 def main():
-    logging.basicConfig(level=logging.INFO)
-    
-    agent = FinancialResearchAgent()
-    
-    query = "Analyze the impact of a 50 bps interest rate hike on the US regional banking sector, focusing on KRE constituents like USB, PNC, and TFC. Evaluate net interest margin compression risks and commercial real estate exposure."
+    logging.disable(logging.CRITICAL)
+
+    # Challenge 8: full research report with a 50% simulated tool-failure rate.
+    agent = FinancialResearchAgent(failure_rate=0.5)
+
+    query = ("Produce a complete investment research report on NVIDIA Corporation. "
+             "Note: The financial data API and SEC filing search tools are currently "
+             "experiencing intermittent failures (simulate 50% failure rate).")
     
     print(f"Starting Challenge 8...")
     print(f"Query: {query}")
