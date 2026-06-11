@@ -11,8 +11,10 @@ class SecEdgarTool:
     @retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=1, max=10))
     def search(self, ticker: str, filing_type: str, year: int = None) -> str:
         """Searches SEC EDGAR full-text API for a specific filing."""
+        # EDGAR full-text search (EFTS) expects a GET request with query params.
+        # The keyword goes in `q`; filing types in `forms`; dates in startdt/enddt.
         query_params = {
-            "keys": ticker,
+            "q": ticker,
             "forms": filing_type
         }
         if year:
@@ -20,7 +22,7 @@ class SecEdgarTool:
             query_params["enddt"] = f"{year}-12-31"
 
         try:
-            response = httpx.post(self.base_url, json=query_params, headers=self.headers, timeout=15.0)
+            response = httpx.get(self.base_url, params=query_params, headers=self.headers, timeout=15.0)
             response.raise_for_status()
             data = response.json()
             
