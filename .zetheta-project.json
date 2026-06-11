@@ -15,7 +15,7 @@
         "Financial Data API"
     ],
     "duration_days": 15,
-    "github_repo_url": "https://github.com/daksh-jangra/Project1A-Dax-AutonomousFinancialResearchAgent",
+    "github_repo_url": "https://github.com/daksh-jangra/Autonomous-Financial-Research-Agent",
     "assessment_criteria": {
         "architecture_design": true,
         "tool_orchestration": true,
