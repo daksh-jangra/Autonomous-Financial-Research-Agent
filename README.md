@@ -161,6 +161,7 @@ code changes required.
 │   ├── disambiguation.py       # Resolves vague queries, records assumptions
 │   ├── prompts.py              # LLM prompts (planner / synthesizer)
 │   ├── parser.py               # Parses LLM plan output
+│   ├── llm_factory.py          # Builds an LLM from env keys (Anthropic/OpenAI/Gemini), else None
 │   ├── error_handler.py        # Orchestrates retries + breakers + fallbacks
 │   ├── circuit_breaker.py      # Per-tool circuit breaker
 │   └── fallback_chains.py      # Fallback tool cascades
@@ -196,6 +197,8 @@ code changes required.
 ├── tests/                      # Pytest suite (16 tests)
 ├── results/                    # Generated outputs (8 challenges + eval reports)
 ├── docs/                       # Architecture spec, trace gallery, optimization log, final report
+├── cli.py                      # Interactive command-line interface
+├── web_app.py                  # Local single-page web UI (stdlib http.server)
 ├── run_all_challenges.py       # Runs all 8 challenges → results/
 ├── run_challenge_8.py          # Runs the degradation challenge alone
 ├── requirements.txt
@@ -225,6 +228,23 @@ API keys are **all optional**. Without them the agent uses live keyless sources
 search), `FMP_API_KEY` (earnings transcripts, peer comparison).
 
 ## Usage
+
+There are four ways to drive the agent: an interactive CLI, a local web UI,
+the batch challenge runners, and the Python API.
+
+**Interactive CLI** — type questions at a prompt and get reports back:
+```bash
+python cli.py                          # interactive REPL
+python cli.py "Profile Apple Inc."     # one-shot mode
+```
+
+**Local web UI** — a single-page app in your browser:
+```bash
+python web_app.py                      # then open http://127.0.0.1:8000
+python web_app.py 8080                 # custom port
+```
+Type a question (or click an example), and the rendered report appears below.
+Built on the stdlib `http.server` + `markdown-it-py` — no extra dependencies.
 
 **Run all 8 challenges** (writes `results/challenge_1..8.md` + `results/run_summary.json`):
 ```bash
