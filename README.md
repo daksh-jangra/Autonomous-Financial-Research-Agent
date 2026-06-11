@@ -1,5 +1,12 @@
 # Autonomous Financial Research Agent (ARA-1)
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![LangGraph](https://img.shields.io/badge/Orchestration-LangGraph-1C3C3C)
+![ChromaDB](https://img.shields.io/badge/Vector%20Store-ChromaDB-FF6B6B)
+![Tests](https://img.shields.io/badge/tests-16%20passing-brightgreen)
+![Challenges](https://img.shields.io/badge/challenges-8%2F8-brightgreen)
+![LLM optional](https://img.shields.io/badge/LLM-optional-blue)
+
 An autonomous AI agent that replicates the research workflow of a junior financial
 analyst. Given a natural-language query, it independently formulates a research
 plan, gathers data from multiple sources (SEC EDGAR filings, financial-data APIs,
@@ -77,9 +84,56 @@ Query Analyzer → Planner → Executor ⟲ → Synthesizer → Fact Verifier �
 | Fact Verifier | Cross-check headline claims | `tools/fact_checker.py` |
 | Report Generator | Assemble sourced, sectioned report + execution trace | `agent/core.py`, `tools/report_gen.py` |
 
+### Diagram
+
+```mermaid
+graph TD
+    classDef memory fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef node fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef ext fill:#dfd,stroke:#333,stroke-width:2px;
+
+    Query[User Research Query] --> Disambiguator(Query Analyzer & Disambiguator)
+
+    subgraph Memory Architecture
+        STM[(Short-Term Memory / Context)]:::memory
+        LTM[(Long-Term ChromaDB)]:::memory
+        EPM[(Episodic Trajectory Memory)]:::memory
+    end
+
+    Disambiguator --> Planner(Planner Node):::node
+    Planner <--> EPM
+    Planner --> Executor(Executor / Tool Dispatcher):::node
+
+    subgraph Tool Registry & Fallbacks
+        Executor --> Tool1[SEC EDGAR API]:::ext
+        Executor --> Tool2[Financial Data API]:::ext
+        Executor --> Tool3[Web & News Search]:::ext
+        Executor --> Tool4[Calculation Engine]:::ext
+        Tool1 -.->|Fallback| Tool3
+        Tool2 -.->|Fallback| Tool1
+    end
+
+    Tool1 --> Obs[Process Observations]
+    Tool2 --> Obs
+    Tool3 --> Obs
+    Tool4 --> Obs
+
+    Obs --> STM
+    Obs --> Executor
+
+    Executor -->|All steps complete| Synthesizer(Synthesis Engine):::node
+    Synthesizer <--> LTM
+    Synthesizer --> FactCheck(Fact Verification Node):::node
+    FactCheck -->|Inconsistencies| Synthesizer
+    FactCheck -->|Verified| Reporter(Report Generator Node):::node
+    Reporter --> Output[Final Investment Report]
+
+    Reporter -.->|Log Trajectory| EPM
+    Reporter -.->|Archive Findings| LTM
+```
+
 See [`docs/architecture_specification_final.md`](docs/architecture_specification_final.md)
-for the full technical spec and [`docs/architecture_diagram.mermaid`](docs/architecture_diagram.mermaid)
-for the diagram.
+for the full technical spec.
 
 ## LLM-optional design
 
