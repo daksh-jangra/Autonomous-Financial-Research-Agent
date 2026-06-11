@@ -90,3 +90,32 @@ To prevent catastrophic failures during complex 15-page research tasks, the arch
 The architecture is inherently designed to be testable against the 20+ metrics specified by QuantumEdge Research.
 - **Trace Logging:** Every node execution is logged locally. This enables the calculation of the `AB-1 Tool Efficiency` metric (useful calls / total calls) and `AB-2 Error Recovery Rate`.
 - **Modularity:** The fact-verification node allows for direct measurement of `FA-1 Numerical Accuracy` by comparing the draft output with the verified output prior to final generation.
+
+---
+
+## 9. As-Built Addendum (post-implementation)
+
+This section reconciles the specification above with the implementation as
+actually built and validated (see `docs/evaluation_report_final.md`).
+
+- **Pipeline:** the 6-node graph (Query Analyzer → Planner → Executor loop →
+  Synthesizer → Fact Verifier → Report Generator) is implemented in
+  `agent/core.py` and matches §3. Earlier in development only 3 nodes were
+  wired; the remaining nodes and the synthesis/memory modules are now
+  integrated.
+- **LLM-optional operation (new):** the agent runs with or without an LLM. The
+  Planner and Synthesizer use an LLM when `ANTHROPIC_API_KEY`/`OPENAI_API_KEY`
+  is present; otherwise a deterministic planner (`agent/ticker_resolver.py`)
+  derives concrete tool calls from query intent, and `synthesis/data_formatters.py`
+  assembles live data into sourced sections. This was added so the system
+  produces real, non-fabricated output even without model access.
+- **Degradation harness:** Challenge 8's 50% failure simulation is implemented
+  by injecting failures into the unreliable tools at the registry boundary, so
+  the existing circuit-breaker + fallback-chain logic handles them unchanged.
+- **Live data sources validated:** yfinance (profile/financials/news) and SEC
+  EDGAR full-text search work with no API key. Tavily/FMP-backed tools degrade
+  to labelled fallbacks without keys.
+- **Metrics:** deterministic metrics (AB-1, AB-2, AB-3, AB-4, AB-5, tokens,
+  latency) are computed from real traces. The LLM-as-a-judge qualitative
+  metrics require an LLM and are reported as `unavailable` rather than stubbed
+  with fixed scores.

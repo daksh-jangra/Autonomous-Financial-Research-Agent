@@ -12,7 +12,7 @@
 
 - **Sector:** Technology
 - **Industry:** Consumer Electronics
-- **Market capitalisation:** $4.27T
+- **Market capitalisation:** $4.26T
 - **Website:** https://www.apple.com
 - **Key executives:**
     - Mr. Timothy D. Cook — CEO & Director
@@ -45,18 +45,18 @@ _Source: AAPL annual income_statement (yfinance)._
 
 ## Market Sentiment & News
 
-**Overall news sentiment:** Neutral (mean polarity -0.04)
+**Overall news sentiment:** Neutral (mean polarity +0.00)
 
 Recent headlines analysed:
 
 [Yahoo Finance] 'Magnificent 7' stocks have lost $2 trillion so far this month, driving the S&P 500 decline: Chart of the Day (Sentiment: 0.55)
-[Yahoo Finance] Tech stocks today: Chip stocks pull back, Trump says he's meeting with AI executives (Sentiment: 0.00)
 [GuruFocus.com] Intel Stock Jumps After BofA Surprise Double Upgrade (Sentiment: 0.00)
 [Motley Fool] Apple Just Delivered Bad News for OpenAI and Anthropic, but Alphabet Could Be a Winner (Sentiment: -0.70)
 [Trefis] What Is Google Hiding Behind Its AI Silence? (Sentiment: -0.40)
 [Bloomberg] DoorDash Built an AI Chatbot to Help With Orders, Reservations and Grocery Lists (Sentiment: 0.00)
 [The Wall Street Journal] Retail Investors Are Selling Stocks to Raise Money for SpaceX (Sentiment: 0.00)
 [Motley Fool] Wall Street Is Ignoring This Part of the Market. That's Why I'm Interested. (Sentiment: 0.25)
+[Stocktwits] AMD, ARM, INTC, NVDA Get A Fresh AI Tailwind - BofA Sees Agentic AI Expanding Server CPU Market To $170B (Sentiment: 0.30)
 
 ## Web Context
 
@@ -99,6 +99,33 @@ Overall news sentiment is Neutral.
     "AAPL"
   ],
   "plan_length": 5,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "earnings_transcript",
+      "source": "earnings_transcript",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    }
+  ],
   "iterations": 5,
   "total_tool_calls": 5,
   "useful_calls": 5,
@@ -107,6 +134,6 @@ Overall news sentiment is Neutral.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 2.08
+  "duration_seconds": 2.09
 }
 ```

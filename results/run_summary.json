@@ -1,0 +1,498 @@
+[
+  {
+    "challenge": 1,
+    "query": "Create a comprehensive profile of Microsoft Corporation including business overview, financial summary, key executives, and recent developments.",
+    "report_file": "challenge_1.md",
+    "report_chars": 5164,
+    "report_words": 724,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 7,
+    "trace": {
+      "query": "Create a comprehensive profile of Microsoft Corporation including business overview, financial summary, key executives, and recent developments.",
+      "intent": "profile",
+      "tickers": [
+        "MSFT"
+      ],
+      "plan_length": 4,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 4,
+      "total_tool_calls": 4,
+      "useful_calls": 4,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 9.91
+    }
+  },
+  {
+    "challenge": 2,
+    "query": "Analyze Apple Inc.'s most recent quarterly earnings. Compare actual results to consensus estimates and identify key takeaways from the earnings call.",
+    "report_file": "challenge_2.md",
+    "report_chars": 5105,
+    "report_words": 751,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 7,
+    "trace": {
+      "query": "Analyze Apple Inc.'s most recent quarterly earnings. Compare actual results to consensus estimates and identify key takeaways from the earnings call.",
+      "intent": "earnings",
+      "tickers": [
+        "AAPL"
+      ],
+      "plan_length": 5,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "earnings_transcript",
+          "source": "earnings_transcript",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 5,
+      "total_tool_calls": 5,
+      "useful_calls": 5,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 2.09
+    }
+  },
+  {
+    "challenge": 3,
+    "query": "Produce a comprehensive risk assessment for Tesla Inc. covering financial risks, operational risks, regulatory risks, and competitive risks.",
+    "report_file": "challenge_3.md",
+    "report_chars": 5276,
+    "report_words": 743,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "SEC Filings & Risk Factors",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 8,
+    "trace": {
+      "query": "Produce a comprehensive risk assessment for Tesla Inc. covering financial risks, operational risks, regulatory risks, and competitive risks.",
+      "intent": "risk",
+      "tickers": [
+        "TSLA"
+      ],
+      "plan_length": 5,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "sec_filing_search",
+          "source": "sec_filing_search",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 5,
+      "total_tool_calls": 5,
+      "useful_calls": 5,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 3.46
+    }
+  },
+  {
+    "challenge": 4,
+    "query": "Compare the cloud computing divisions of Amazon (AWS), Microsoft (Azure), and Google (GCP). Analyze revenue growth, market share, margins, and competitive advantages.",
+    "report_file": "challenge_4.md",
+    "report_chars": 9167,
+    "report_words": 1317,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Peer Comparison",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 6,
+    "trace": {
+      "query": "Compare the cloud computing divisions of Amazon (AWS), Microsoft (Azure), and Google (GCP). Analyze revenue growth, market share, margins, and competitive advantages.",
+      "intent": "comparison",
+      "tickers": [
+        "MSFT",
+        "AMZN",
+        "GOOGL"
+      ],
+      "plan_length": 7,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "peer_comparison",
+          "source": "peer_comparison",
+          "degraded": false
+        }
+      ],
+      "iterations": 7,
+      "total_tool_calls": 7,
+      "useful_calls": 7,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 4.31
+    }
+  },
+  {
+    "challenge": 5,
+    "query": "Research Palantir Technologies. Note: Recent news reports suggest the company is struggling, but their financial statements show strong growth. Investigate and explain the apparent contradiction.",
+    "report_file": "challenge_5.md",
+    "report_chars": 5213,
+    "report_words": 744,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "SEC Filings & Risk Factors",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 8,
+    "trace": {
+      "query": "Research Palantir Technologies. Note: Recent news reports suggest the company is struggling, but their financial statements show strong growth. Investigate and explain the apparent contradiction.",
+      "intent": "contradiction",
+      "tickers": [
+        "PLTR"
+      ],
+      "plan_length": 5,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "sec_filing_search",
+          "source": "sec_filing_search",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 5,
+      "total_tool_calls": 5,
+      "useful_calls": 5,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 2.13
+    }
+  },
+  {
+    "challenge": 6,
+    "query": "What's happening with the banks?",
+    "report_file": "challenge_6.md",
+    "report_chars": 6589,
+    "report_words": 921,
+    "sections": [
+      "Query Interpretation & Assumptions",
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Research Methodology"
+    ],
+    "num_sections": 8,
+    "trace": {
+      "query": "What's happening with the banks?",
+      "intent": "ambiguous",
+      "tickers": [
+        "JPM",
+        "BAC",
+        "USB"
+      ],
+      "plan_length": 6,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 6,
+      "total_tool_calls": 6,
+      "useful_calls": 6,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 2.77
+    }
+  },
+  {
+    "challenge": 7,
+    "query": "Based on the companies you've already researched, what themes emerge across the technology sector? Identify cross-cutting risks and opportunities.",
+    "report_file": "challenge_7.md",
+    "report_chars": 5008,
+    "report_words": 687,
+    "sections": [
+      "Prior Research Recalled (Long-Term Memory)",
+      "Web Context",
+      "Synthesis",
+      "Research Methodology"
+    ],
+    "num_sections": 4,
+    "trace": {
+      "query": "Based on the companies you've already researched, what themes emerge across the technology sector? Identify cross-cutting risks and opportunities.",
+      "intent": "sector_memory",
+      "tickers": [],
+      "plan_length": 2,
+      "tool_sequence": [
+        {
+          "tool": "vector_db_search",
+          "source": "vector_db_search",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        }
+      ],
+      "iterations": 2,
+      "total_tool_calls": 2,
+      "useful_calls": 2,
+      "degraded_calls": 0,
+      "simulated_failures": 0,
+      "memory_hits": 1,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 0.03
+    }
+  },
+  {
+    "challenge": 8,
+    "query": "Produce a complete investment research report on NVIDIA Corporation. Note: The financial data API and SEC filing search tools are currently experiencing intermittent failures (simulate 50% failure rate).",
+    "report_file": "challenge_8.md",
+    "report_chars": 5313,
+    "report_words": 745,
+    "sections": [
+      "Company Overview",
+      "Financial Analysis",
+      "Market Sentiment & News",
+      "SEC Filings & Risk Factors",
+      "Web Context",
+      "Synthesis",
+      "Fact Verification",
+      "Data Gaps & Degradation",
+      "Research Methodology"
+    ],
+    "num_sections": 9,
+    "trace": {
+      "query": "Produce a complete investment research report on NVIDIA Corporation. Note: The financial data API and SEC filing search tools are currently experiencing intermittent failures (simulate 50% failure rate).",
+      "intent": "full_report",
+      "tickers": [
+        "NVDA"
+      ],
+      "plan_length": 7,
+      "tool_sequence": [
+        {
+          "tool": "company_profile",
+          "source": "company_profile",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "financial_data_api",
+          "degraded": false
+        },
+        {
+          "tool": "sec_filing_search",
+          "source": "web_search",
+          "degraded": true
+        },
+        {
+          "tool": "earnings_transcript",
+          "source": "earnings_transcript",
+          "degraded": false
+        },
+        {
+          "tool": "news_sentiment",
+          "source": "news_sentiment",
+          "degraded": false
+        },
+        {
+          "tool": "web_search",
+          "source": "web_search",
+          "degraded": false
+        },
+        {
+          "tool": "financial_data_api",
+          "source": "web_search",
+          "degraded": true
+        }
+      ],
+      "iterations": 7,
+      "total_tool_calls": 7,
+      "useful_calls": 5,
+      "degraded_calls": 2,
+      "simulated_failures": 3,
+      "memory_hits": 0,
+      "llm_used": false,
+      "tokens": 0,
+      "duration_seconds": 1.8
+    }
+  }
+]

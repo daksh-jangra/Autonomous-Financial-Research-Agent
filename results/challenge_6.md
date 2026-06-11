@@ -6,13 +6,20 @@
 
 ---
 
+## Query Interpretation & Assumptions
+
+**Assumptions made:**
+- Query did not name a specific company. Interpreted it as the sector represented by JPM, BAC, USB and analysed those as representative constituents.
+
+
+
 ## Company Overview
 
 **JP Morgan Chase & Co.** (JPM)
 
 - **Sector:** Financial Services
 - **Industry:** Banks - Diversified
-- **Market capitalisation:** $835.02B
+- **Market capitalisation:** $830.89B
 - **Website:** https://www.jpmorganchase.com
 - **Key executives:**
     - Mr. James  Dimon — Chairman & CEO
@@ -128,6 +135,38 @@ Overall news sentiment is Positive.
     "USB"
   ],
   "plan_length": 6,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    }
+  ],
   "iterations": 6,
   "total_tool_calls": 6,
   "useful_calls": 6,
@@ -136,6 +175,6 @@ Overall news sentiment is Positive.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 2.88
+  "duration_seconds": 2.77
 }
 ```

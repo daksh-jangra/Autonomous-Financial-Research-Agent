@@ -12,7 +12,7 @@
 
 - **Sector:** Technology
 - **Industry:** Semiconductors
-- **Market capitalisation:** $4.91T
+- **Market capitalisation:** $4.84T
 - **Website:** https://www.nvidia.com
 - **Key executives:**
     - Mr. Jen-Hsun  Huang — Co-Founder, CEO & Director
@@ -49,18 +49,18 @@ _Financial data unavailable: [{'url': 'http://example.com/mock', 'title': '[MOCK
 
 ## Market Sentiment & News
 
-**Overall news sentiment:** Negative (mean polarity -0.10)
+**Overall news sentiment:** Neutral (mean polarity +0.08)
 
 Recent headlines analysed:
 
-[Yahoo Finance] Why the SpaceX, OpenAI, and Anthropic IPOs won't derail the bull market (Sentiment: 0.00)
+[Yahoo Finance Video] 'There's more to life than the Mag 7': Robinhood CIO (Sentiment: 0.50)
+[Yahoo Finance Video] AI stocks: MANGOS ascends, replacing FAANG position (Sentiment: 0.00)
 [Yahoo Finance Video] Why Super Micro stock is plunging & Cracker Barrel stock is surging (Sentiment: 0.33)
+[MT Newswires] Rising Agentic AI Workloads Expected to Boost Demand for CPUs, BofA Says (Sentiment: -0.10)
+[Motley Fool] Inflation Hasn't Been This High Since 2023. Could Gold Be Due to Rise Higher This Year? (Sentiment: 0.10)
+[24/7 Wall St.] A Dramatic Fed Pivot Just Unlocked a New Era of Growth for UPS (Sentiment: -0.15)
+[24/7 Wall St.] Can Oracle Hit $400? This Is How It Could (Sentiment: 0.00)
 [24/7 Wall St.] GameStop Surges on Q1 Beat, $2B Buyback, $39 Target (Sentiment: 0.00)
-[24/7 Wall St.] Sticky Inflation’s Worst Nightmare: Why Small Value Stocks Are Secretly Printing Money (Sentiment: -0.55)
-[Motley Fool] Will the SpaceX IPO Pop Tomorrow? Here's Why That Is The Wrong Question Investors Should Ask. (Sentiment: -0.50)
-[24/7 Wall St.] Private Equity Eyes These 3 Fintech Names as Consolidation Accelerates (Sentiment: 0.00)
-[Motley Fool] Micron Technology Stock Is Falling. Should You Buy the Dip? (Sentiment: 0.00)
-[Motley Fool] Reddit Is Down 28% This Year, but It Won't Stay That Way For Long (Sentiment: -0.10)
 
 ## SEC Filings & Risk Factors
 
@@ -75,7 +75,7 @@ Recent headlines analysed:
 ### Financial Context
 Financial data indicates ongoing trends. 
 ### Market Sentiment
-Overall news sentiment is Negative. 
+Overall news sentiment is Neutral. 
 
 ### Raw Data Synthesis
 - Data collected for financials
@@ -115,6 +115,43 @@ Overall news sentiment is Negative.
     "NVDA"
   ],
   "plan_length": 7,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "sec_filing_search",
+      "source": "web_search",
+      "degraded": true
+    },
+    {
+      "tool": "earnings_transcript",
+      "source": "earnings_transcript",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "web_search",
+      "degraded": true
+    }
+  ],
   "iterations": 7,
   "total_tool_calls": 7,
   "useful_calls": 5,
@@ -123,6 +160,6 @@ Overall news sentiment is Negative.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 1.93
+  "duration_seconds": 1.8
 }
 ```

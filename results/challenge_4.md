@@ -12,7 +12,7 @@
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
+- **Market capitalisation:** $2.87T
 - **Website:** https://www.microsoft.com
 - **Key executives:**
     - Mr. Satya  Nadella — Chairman & CEO
@@ -31,7 +31,7 @@ Microsoft Corporation develops and supports software, services, devices, and sol
 
 - **Sector:** Consumer Cyclical
 - **Industry:** Internet Retail
-- **Market capitalisation:** $2.55T
+- **Market capitalisation:** $2.53T
 - **Website:** https://www.amazon.com
 - **Key executives:**
     - Mr. Jeffrey P. Bezos — Founder & Executive Chairman
@@ -50,7 +50,7 @@ Amazon.com, Inc. engages in the retail sale of consumer products, advertising, a
 
 - **Sector:** Communication Services
 - **Industry:** Internet Content & Information
-- **Market capitalisation:** $4.25T
+- **Market capitalisation:** $4.23T
 - **Website:** https://abc.xyz
 - **Key executives:**
     - Mr. Sundar  Pichai — CEO & Director
@@ -185,6 +185,43 @@ Financial data indicates ongoing trends.
     "GOOGL"
   ],
   "plan_length": 7,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "peer_comparison",
+      "source": "peer_comparison",
+      "degraded": false
+    }
+  ],
   "iterations": 7,
   "total_tool_calls": 7,
   "useful_calls": 7,
@@ -193,6 +230,6 @@ Financial data indicates ongoing trends.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 3.91
+  "duration_seconds": 4.31
 }
 ```

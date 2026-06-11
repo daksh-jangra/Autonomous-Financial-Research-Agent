@@ -12,7 +12,7 @@
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $311.17B
+- **Market capitalisation:** $306.57B
 - **Website:** https://www.palantir.com
 - **Key executives:**
     - Dr. Alexander C. Karp J.D. — Co-Founder, CEO & Director
@@ -103,6 +103,33 @@ Overall news sentiment is Neutral.
     "PLTR"
   ],
   "plan_length": 5,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "sec_filing_search",
+      "source": "sec_filing_search",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    }
+  ],
   "iterations": 5,
   "total_tool_calls": 5,
   "useful_calls": 5,
@@ -111,6 +138,6 @@ Overall news sentiment is Neutral.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 2.42
+  "duration_seconds": 2.13
 }
 ```

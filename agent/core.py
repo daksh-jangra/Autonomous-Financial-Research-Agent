@@ -118,7 +118,15 @@ class FinancialResearchAgent:
 
         tickers = resolve_tickers(query)
         if not tickers and intent in ("ambiguous", "full_report", "risk", "profile", "earnings"):
-            tickers = sector_proxy_tickers(query)
+            proxies = sector_proxy_tickers(query)
+            if proxies:
+                tickers = proxies
+                # Document the interpretation we made so the report is transparent
+                # about how a vague query was resolved (Challenge 6).
+                disamb.setdefault("assumptions_made", []).append(
+                    f"Query did not name a specific company. Interpreted it as the "
+                    f"sector represented by {', '.join(proxies)} and analysed those as "
+                    f"representative constituents.")
         return {"analysis": analysis, "disambiguation": disamb,
                 "intent": intent, "tickers": tickers}
 
@@ -459,11 +467,17 @@ class FinancialResearchAgent:
                      if v["result"] is not None and not v["degraded"])
         mem_hits = sum(1 for v in gathered.values()
                        if v["tool"] == "vector_db_search" and v["result"])
+        tool_sequence = [
+            {"tool": v["tool"] or "(llm-step)", "source": v["source_tool"],
+             "degraded": v["degraded"]}
+            for v in gathered.values()
+        ]
         return {
             "query": state["query"],
             "intent": state["intent"],
             "tickers": state["tickers"],
             "plan_length": len(state["plan"]),
+            "tool_sequence": tool_sequence,
             "iterations": state["iteration_count"],
             "total_tool_calls": total,
             "useful_calls": useful,

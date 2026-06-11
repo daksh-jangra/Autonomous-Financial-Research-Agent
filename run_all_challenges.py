@@ -75,13 +75,32 @@ def main():
         print(f"   intent={trace.get('intent')} tickers={trace.get('tickers')} "
               f"calls={trace.get('total_tool_calls')} degraded={trace.get('degraded_calls')} "
               f"sim_failures={trace.get('simulated_failures')} mem_hits={trace.get('memory_hits')}")
-        summary_rows.append((num, trace))
 
-    # Token-usage / run summary used by the evaluation report.
+        # Lightweight report-text metrics for the evaluation phase.
+        section_titles = [ln[3:].strip() for ln in report.splitlines() if ln.startswith("## ")]
+        summary_rows.append({
+            "challenge": num,
+            "query": query,
+            "report_file": f"challenge_{num}.md",
+            "report_chars": len(report),
+            "report_words": len(report.split()),
+            "sections": section_titles,
+            "num_sections": len(section_titles),
+            "trace": trace,
+        })
+
+    # Machine-readable run summary consumed by the evaluation generator.
+    summary_path = os.path.join(RESULTS_DIR, "run_summary.json")
+    with open(summary_path, "w") as f:
+        json.dump(summary_rows, f, indent=2)
+    print(f"\n-> wrote {summary_path}")
+
     print("\n\nAll challenges complete. Summary:")
-    for num, t in summary_rows:
-        print(f"  Challenge {num}: {t.get('iterations')} tool calls, "
-              f"{t.get('degraded_calls')} degraded, {t.get('duration_seconds')}s")
+    for row in summary_rows:
+        t = row["trace"]
+        print(f"  Challenge {row['challenge']}: {t.get('iterations')} tool calls, "
+              f"{t.get('degraded_calls')} degraded, {t.get('duration_seconds')}s, "
+              f"{row['report_words']} words")
 
 
 if __name__ == "__main__":

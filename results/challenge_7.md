@@ -14,17 +14,17 @@ Retrieved 8 prior research record(s) from the vector store (companies analysed e
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $311.17B
+- **Market capitalisation:** $306.57B
 - **Website:** https://www.palantir.com
 - **Key executives:**
     - Dr. Alexander C. Karp J.D. — Co-Founder, CEO & Director
     - Mr. Stephen Andrew Cohen — Co-Founder, President, Secretary & Director
-    - Mr. David A. Gl _(ticker=PLTR, relevance=0.17)_
+    - Mr. David A. Gl _(ticker=PLTR, relevance=0.16)_
 - Research on TSLA (risk). **Tesla, Inc.** (TSLA)
 
 - **Sector:** Consumer Cyclical
 - **Industry:** Auto Manufacturers
-- **Market capitalisation:** $1.46T
+- **Market capitalisation:** $1.44T
 - **Website:** https://www.tesla.com
 - **Key executives:**
     - Mr. Elon R. Musk — Co-Founder, Technoking of Tesla, CEO & Director
@@ -34,18 +34,18 @@ Retrieved 8 prior research record(s) from the vector store (companies analysed e
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
+- **Market capitalisation:** $2.87T
 - **Website:** https://www.microsoft.com
 - **Key executives:**
     - Mr. Satya  Nadella — Chairman & CEO
     - Mr. Bradford L. Smith LCA — President & Vice Chairman
     - Ms. Amy E. Hood — Executive VP & CFO
-    - Mr. Takeshi  Numot _(ticker=MSFT, relevance=0.11)_
+    - Mr. Takeshi  Numot _(ticker=MSFT, relevance=0.10)_
 - Research on MSFT (profile). **Microsoft Corporation** (MSFT)
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
+- **Market capitalisation:** $2.87T
 - **Website:** https://www.microsoft.com
 - **Key executives:**
     - Mr. Satya  Nadella — Chairman & CEO
@@ -56,45 +56,45 @@ Retrieved 8 prior research record(s) from the vector store (companies analysed e
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
+- **Market capitalisation:** $2.87T
 - **Website:** https://www.microsoft.com
 - **Key executives:**
     - Mr. Satya  Nadella — Chairman & CEO
     - Mr. Bradford L. Smith LCA — President & Vice Chairman
     - Ms. Amy E. Hood — Executive VP & CFO
     - Mr. Takeshi  Numot _(ticker=AMZN, relevance=0.07)_
-- Research on GOOGL (comparison). **Microsoft Corporation** (MSFT)
-
-- **Sector:** Technology
-- **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
-- **Website:** https://www.microsoft.com
-- **Key executives:**
-    - Mr. Satya  Nadella — Chairman & CEO
-    - Mr. Bradford L. Smith LCA — President & Vice Chairman
-    - Ms. Amy E. Hood — Executive VP & CFO
-    - Mr. Takeshi  Numo _(ticker=GOOGL, relevance=0.06)_
 - Research on AAPL (earnings). **Apple Inc.** (AAPL)
 
 - **Sector:** Technology
 - **Industry:** Consumer Electronics
-- **Market capitalisation:** $4.27T
+- **Market capitalisation:** $4.26T
 - **Website:** https://www.apple.com
 - **Key executives:**
     - Mr. Timothy D. Cook — CEO & Director
     - Mr. Kevan  Parekh — Senior VP & CFO
     - Mr. Sabih  Khan — Senior VP & Chief Operating Officer
     - Ms. Deirdre  O'Brien — Senior Vice Presi _(ticker=AAPL, relevance=0.06)_
+- Research on GOOGL (comparison). **Microsoft Corporation** (MSFT)
+
+- **Sector:** Technology
+- **Industry:** Software - Infrastructure
+- **Market capitalisation:** $2.87T
+- **Website:** https://www.microsoft.com
+- **Key executives:**
+    - Mr. Satya  Nadella — Chairman & CEO
+    - Mr. Bradford L. Smith LCA — President & Vice Chairman
+    - Ms. Amy E. Hood — Executive VP & CFO
+    - Mr. Takeshi  Numo _(ticker=GOOGL, relevance=0.06)_
 - Research on USB (ambiguous). **JP Morgan Chase & Co.** (JPM)
 
 - **Sector:** Financial Services
 - **Industry:** Banks - Diversified
-- **Market capitalisation:** $835.02B
+- **Market capitalisation:** $830.89B
 - **Website:** https://www.jpmorganchase.com
 - **Key executives:**
     - Mr. James  Dimon — Chairman & CEO
     - Mr. Jeremy  Barnum — Executive VP & CFO
-    - Ms. Mary Callahan Erdoes — Chief Executive Officer of Asset & Wealth Man _(ticker=USB, relevance=0.00)_
+    - Ms. Mary Callahan Erdoes — Chief Executive Officer of Asset & Wealth Man _(ticker=USB, relevance=-0.00)_
 
 ## Web Context
 
@@ -103,7 +103,7 @@ Retrieved 8 prior research record(s) from the vector store (companies analysed e
 ## Synthesis
 
 ### Cross-Company Themes
-Synthesising across 7 previously researched companies (PLTR, TSLA, MSFT, AMZN, GOOGL, AAPL, USB). Recurring themes drawn from their stored profiles include scale-driven cloud/AI infrastructure investment, concentration in a small number of high-margin segments, and shared exposure to regulatory and competitive pressure. See the recalled records above for the source material each theme is grounded in.
+Synthesising across 7 previously researched companies (PLTR, TSLA, MSFT, AMZN, AAPL, GOOGL, USB). Recurring themes drawn from their stored profiles include scale-driven cloud/AI infrastructure investment, concentration in a small number of high-margin segments, and shared exposure to regulatory and competitive pressure. See the recalled records above for the source material each theme is grounded in.
 
 ## Research Methodology
 
@@ -124,6 +124,18 @@ Synthesising across 7 previously researched companies (PLTR, TSLA, MSFT, AMZN, G
   "intent": "sector_memory",
   "tickers": [],
   "plan_length": 2,
+  "tool_sequence": [
+    {
+      "tool": "vector_db_search",
+      "source": "vector_db_search",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    }
+  ],
   "iterations": 2,
   "total_tool_calls": 2,
   "useful_calls": 2,

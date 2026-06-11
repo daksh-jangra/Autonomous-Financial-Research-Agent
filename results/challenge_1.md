@@ -12,7 +12,7 @@
 
 - **Sector:** Technology
 - **Industry:** Software - Infrastructure
-- **Market capitalisation:** $2.90T
+- **Market capitalisation:** $2.87T
 - **Website:** https://www.microsoft.com
 - **Key executives:**
     - Mr. Satya  Nadella — Chairman & CEO
@@ -45,18 +45,18 @@ _Source: MSFT annual income_statement (yfinance)._
 
 ## Market Sentiment & News
 
-**Overall news sentiment:** Neutral (mean polarity -0.00)
+**Overall news sentiment:** Neutral (mean polarity -0.02)
 
 Recent headlines analysed:
 
 [Yahoo Finance Video] Oracle stock sinking as its AI spending climbs, debt grows (Sentiment: 0.00)
 [Yahoo Finance] 'Magnificent 7' stocks have lost $2 trillion so far this month, driving the S&P 500 decline: Chart of the Day (Sentiment: 0.55)
+[GuruFocus.com] Microsoft Limits Claude Use (Sentiment: 0.00)
 [Investing.com] Google spurned U.S. quantum fund over conditions that would slow R&D (Sentiment: -0.30)
 [24/7 Wall St.] The Stock Market Isn’t Crashing. Investors Are Just Fleeing Technology Stocks. (Sentiment: 0.00)
 [Trefis] What Is Google Hiding Behind Its AI Silence? (Sentiment: -0.40)
 [Bloomberg] Amazon Says Its Data Centers Use 2.5 Billion Gallons of Water (Sentiment: 0.00)
 [Trefis] Oracle Just Showed Wall Street the AI Boom, Then Handed It The Bill (Sentiment: 0.00)
-[Proactive] Nasdaq semis stocks lead rebound rally despite Trump warning of new Iran strikes (Sentiment: 0.14)
 
 ## Web Context
 
@@ -99,6 +99,28 @@ Overall news sentiment is Neutral.
     "MSFT"
   ],
   "plan_length": 4,
+  "tool_sequence": [
+    {
+      "tool": "company_profile",
+      "source": "company_profile",
+      "degraded": false
+    },
+    {
+      "tool": "financial_data_api",
+      "source": "financial_data_api",
+      "degraded": false
+    },
+    {
+      "tool": "news_sentiment",
+      "source": "news_sentiment",
+      "degraded": false
+    },
+    {
+      "tool": "web_search",
+      "source": "web_search",
+      "degraded": false
+    }
+  ],
   "iterations": 4,
   "total_tool_calls": 4,
   "useful_calls": 4,
@@ -107,6 +129,6 @@ Overall news sentiment is Neutral.
   "memory_hits": 0,
   "llm_used": false,
   "tokens": 0,
-  "duration_seconds": 11.02
+  "duration_seconds": 9.91
 }
 ```
